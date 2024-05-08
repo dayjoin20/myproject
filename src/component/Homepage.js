@@ -5,7 +5,9 @@ import 'react-circular-progressbar/dist/styles.css';
 import Switchbutton from './Switchbutton';
 import './GaugeDisplay.css';
 
-const Homepage = () => { 
+
+
+const Homepage = () => {
   const [gaugeData, setGaugeData] = useState([
     { id: 1, name: 'ความชื้นในดิน 1', value: 0, unit: '%', maxValue: 100 },
     { id: 2, name: 'ความชื้นในดิน 2', value: 0, unit: '%', maxValue: 100 },
@@ -46,7 +48,7 @@ const Homepage = () => {
     return () => {
       gaugeRef.off();
     };
-  }, [gaugeData]); 
+  }, [gaugeData]);
 
   return (
     <div className="app-container">
@@ -76,6 +78,7 @@ const Homepage = () => {
         ))}
       </div>
       <div>
+       
         <Switchbutton />
       </div>
     </div>
