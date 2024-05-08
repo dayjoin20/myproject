@@ -1,0 +1,92 @@
+.switch-container {
+  
+  display: flex; /* ให้เป็น flex container */
+  justify-content: center; /* จัดเรียงสวิตช์ตรงกลางแนวนอน */
+  align-items: center; /* จัดเรียงสวิตช์ตรงกลางแนวตั้ง */
+  width: 100%; /* ปรับความกว้างของคอนเทนเนอร์ */
+  height: 100%; /* ปรับความสูงของคอนเทนเนอร์ */
+  margin-top: 50px; /* ปรับระยะห่างด้านบน */
+  
+}
+
+.switch-text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -110px; /* ปรับตำแหน่งข้อความไปทางซ้าย */
+  text-align: center;
+  font-size: 24px;
+  color: rgb(255, 255, 255);
+}
+
+.switch-text2 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -170px; /* ปรับตำแหน่งข้อความไปทางซ้าย */
+  text-align: center;
+  font-size: 24px;
+  color: rgb(255, 255, 255);
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  width: 100px; /* เพิ่มความกว้างของ switch */
+  height: 500px; /* เพิ่มความสูงของ switch */
+  margin-right: 100px;
+  margin-left: 170px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #943a3a;
+  transition: .4s;
+  width: 90px; /* เพิ่มความกว้างของ slider */
+  height: 50px; /* เพิ่มความสูงของ slider */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 36px; /* เพิ่มความสูงของ slider:before */
+  width: 36px; /* เพิ่มความกว้างของ slider:before */
+  left: 7px;
+  bottom: 7px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2b912b;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(40px); /* เพิ่มขนาดของการเลื่อน slider:before */
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 50px; /* เพิ่มขนาดของ slider */
+}
+
+.slider.round:before {
+  border-radius: 50%; /* เพิ่มขนาดของ slider:before */
+}
