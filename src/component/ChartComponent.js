@@ -31,6 +31,9 @@ export default function ChartComponent({ options, series, type, dates }) {
 						},
 					},
 				},
+				// ตั้งค่าสี chart
+				colors: ['#2E93fA', '#66DA26', '#E91E63', '#E91E63', '#FF9800'],
+				// ตั้งค่าเเนวนอน
 				xaxis: {
 					...options.xaxis,
 					type: 'datetime', // Set type as datetime
@@ -38,6 +41,21 @@ export default function ChartComponent({ options, series, type, dates }) {
 					labels: {
 						formatter: function (val) {
 							return new Date(val).toLocaleString(); // Format date
+						},
+						// show: true,
+						// rotate: -45,
+						// rotateAlways: false,
+						// hideOverlappingLabels: true,
+						// showDuplicates: false,
+						// trim: false,
+						// minHeight: undefined,
+						// maxHeight: 120,
+						style: {
+							colors: '#FFFFFF',
+							fontSize: '12px',
+							fontFamily: 'Helvetica, Arial, sans-serif',
+							fontWeight: 400,
+							cssClass: 'apexcharts-xaxis-label',
 						},
 					},
 					zoom: {
