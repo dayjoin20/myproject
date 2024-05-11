@@ -1,76 +1,67 @@
-import { useState, useEffect, useRef } from "react";
-import { Line } from "react-chartjs-2";
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement, } from "chart.js";
-ChartJS.register(CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend,);
+import React from 'react';
+import ReactApexChart from 'react-apexcharts';
 
-export default function ChartComponent({
-  title = '',
-  showTitle = true,
-  legendPosition = 'top',
-  labels = [],
-  datasets = [],
-}) {
-
-  const chartRef = useRef();
-  const [chartData, setChartData] = useState({ datasets: [], });
-  const [chartOptions, setChartOptions] = useState({});
-
-  useEffect(() => {
-    setChartOptions({
-      responsive: true,
-      plugins: {
-        title: {
-          display: showTitle,
-          text: title,
-          font: {
-            size: 18,
-            family: 'tahoma',
-            weight: 'normal',
-            style: 'italic',
-            color: 'red',
-          },
-          padding: {
-            top: 10,
-            bottom: 15
-          },
-        },
-      },
-      legend: {
-        position: legendPosition,
-      },
-      interaction: {
-        intersect: false,
-      },
-      scales: {
-        x: {
-          display: true,
-          title: {
-            display: true
-          }
-        },
-        y: {
-          display: true,
-          title: {
-            display: true,
-            text: 'Value'
-          },
-          suggestedMin: -10,
-          suggestedMax: 200
-        }
-      }
-    });
-  }, []);
-
-  useEffect(() => {
-    setChartData({
-      labels,
-      datasets,
-    });
-
-    chartRef.current.update?.();
-  }, [labels, datasets]);
-
-  return (
-    <Line ref={chartRef} options={chartOptions} data={chartData} />
-  );
+export default function ChartComponent({ options, series, type, dates }) {
+	return (
+		<ReactApexChart
+			options={{
+				...options,
+				chart: {
+					id: 'chartComponent',
+					type: type,
+					toolbar: {
+						show: true,
+						tools: {
+							download: true,
+							selection: true,
+							zoom: true,
+							zoomin: true,
+							zoomout: true,
+							pan: true,
+							reset: true,
+						},
+						autoSelected: 'zoom',
+					},
+					animations: {
+						enabled: true,
+						easing: 'linear',
+						dynamicAnimation: {
+							enabled: true,
+							speed: 200,
+						},
+					},
+				},
+				xaxis: {
+					...options.xaxis,
+					type: 'datetime', // Set type as datetime
+					categories: options, // Use dates array from props
+					labels: {
+						formatter: function (val) {
+							return new Date(val).toLocaleString(); // Format date
+						},
+					},
+					zoom: {
+						autoScaleYaxis: true,
+						enabled: true,
+						type: 'x',
+						zoomedArea: {
+							fill: {
+								color: '#90CAF9',
+								opacity: 0.4,
+							},
+							stroke: {
+								color: '#0D47A1',
+								opacity: 0.4,
+								width: 1,
+							},
+						},
+						zoomMax: 7,
+					},
+				},
+			}}
+			series={series}
+			type={type}
+			height={400}
+		/>
+	);
 }
