@@ -47,3 +47,24 @@
 .data-table td:nth-child(3) {
   width: 20%;
 }
+
+.chart-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+  width: 100%;
+  max-width: 2000px;
+  margin: 100px auto 0;
+  padding: 20px;
+  border-radius: 50px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+.chart-name {
+  font-weight: bold;
+  font-size: 1.7em;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #c99870 /* เปลี่ยนสีข้อความเป็นสีส้ม */
+}
+

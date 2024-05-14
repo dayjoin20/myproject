@@ -1,5 +1,24 @@
+.average-moisture {
+  display: flex; /* ให้เป็น flex container */
+  justify-content: center; /* จัดเรียงสวิตช์ตรงกลางแนวนอน */
+  align-items: center; /* จัดเรียงสวิตช์ตรงกลางแนวตั้ง */
+  width: 100%; /* ปรับความกว้างของคอนเทนเนอร์ */
+  height: 100%; /* ปรับความสูงของคอนเทนเนอร์ */
+  margin-top: 30px; /* ปรับระยะห่างด้านบน */
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.value-orange {
+  color: orange; /* สีส้มสำหรับค่าเฉลี่ยความชื้นในดิน <= 75 */
+}
+
+.value-green {
+  color: green; /* สีเขียวสำหรับค่าเฉลี่ยความชื้นในดิน >= 80 */
+}
+
 .switch-container {
-  
   display: flex; /* ให้เป็น flex container */
   justify-content: center; /* จัดเรียงสวิตช์ตรงกลางแนวนอน */
   align-items: center; /* จัดเรียงสวิตช์ตรงกลางแนวตั้ง */

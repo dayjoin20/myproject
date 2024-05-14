@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-export default function ChartComponent({ options, series, type, dates }) {
+export default function ChartComponent({ options, series, type, title }) {
 	return (
 		<ReactApexChart
 			options={{
@@ -27,13 +27,13 @@ export default function ChartComponent({ options, series, type, dates }) {
 						easing: 'linear',
 						dynamicAnimation: {
 							enabled: true,
-							speed: 200,
+							speed: 350,
 						},
 					},
 				},
 				// ตั้งค่าสี chart
-				colors: ['#2E93fA', '#66DA26', '#E91E63', '#E91E63', '#FF9800'],
-				// ตั้งค่าเเนวนอน
+				colors: ['#2E93fA', '#5cb85c', '#FF7F50', '#E91E63', '#FF9800'],
+				// ตั้งค่าแกน X
 				xaxis: {
 					...options.xaxis,
 					type: 'datetime', // Set type as datetime
@@ -42,14 +42,8 @@ export default function ChartComponent({ options, series, type, dates }) {
 						formatter: function (val) {
 							return new Date(val).toLocaleString(); // Format date
 						},
-						// show: true,
-						// rotate: -45,
-						// rotateAlways: false,
-						// hideOverlappingLabels: true,
-						// showDuplicates: false,
-						// trim: false,
-						// minHeight: undefined,
-						// maxHeight: 120,
+						minHeight: undefined,
+						maxHeight: 120,
 						style: {
 							colors: '#FFFFFF',
 							fontSize: '12px',
@@ -76,10 +70,47 @@ export default function ChartComponent({ options, series, type, dates }) {
 						zoomMax: 7,
 					},
 				},
+				yaxis: {
+					labels: {
+						style: {
+							colors: '#FFFFFF',
+							fontSize: '12px',
+							fontFamily: 'Helvetica, Arial, sans-serif',
+							fontWeight: 400,
+							cssClass: 'apexcharts-yaxis-label',
+						}
+					},
+				},
+				// ใส่ชื่อของกราฟ
+				title: {
+					text: title,
+					align: 'center',
+					margin: 10,
+					offsetX: 0,
+					offsetY: 0,
+					floating: false,
+					style: {
+						fontSize: '30px',
+						color: '#c99870'
+						
+					},
+				},
+
+				legend: {
+					show: true,
+					fontSize: '14px',
+					fontFamily: 'Helvetica, Arial',
+
+					labels: {
+						colors: '#FFFFFF',
+	
+					},
+				}
 			}}
 			series={series}
 			type={type}
 			height={400}
+			width={900}
 		/>
 	);
 }
